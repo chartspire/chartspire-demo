@@ -1,6 +1,13 @@
 import { useEffect, useRef } from 'react'
-import { BinanceDataFeed, ChartOptions, ChartSpire, StocksDataFeed, TICKER_TYPE } from 'chartspire'
-
+import {
+    BinanceDataFeed,
+    ChartOptions,
+    ChartSpire, fetchWatchListWithCallback, setGetWatchListsCallback,
+    setWatchListChangeCallback,
+    StocksDataFeed,
+    TICKER_TYPE,
+    TickerInfoMap
+} from 'chartspire'
 
 const ChartSpireReact = () => {
     const chartContainerRef = useRef(null);
@@ -17,9 +24,9 @@ const ChartSpireReact = () => {
                 //     market: 'Crypto',
                 //     name: 'Bitcoin',
                 //     shortName: 'BTCUSDT',
-                //     ticker: 'btcusdt',
+                //     ticker: 'BTCUSDT',
                 //     priceCurrency: 'usd',
-                //     type: undefined,
+                //     type: TICKER_TYPE.CRYPTO,
                 // },
                 ticker: {
                     exchange: 'nasdaq',
@@ -33,8 +40,9 @@ const ChartSpireReact = () => {
                 period: { multiplier: 1, timespan: 'week', text: 'W' },
                 // subIndicators: ['VOL', 'MACD'],
                 theme: 'dark',
-                watchlistEnabled: false,
-                // defaultDataFeed: new BinanceDataFeed(),
+                watchlistEnabled: true,
+                useExternalWatchListStorage: false,
+                defaultDataFeed: new StocksDataFeed(),
                 stockDataFeed: new StocksDataFeed(),
                 cryptoDataFeed: new BinanceDataFeed(),
                 useExternalLayoutStorage: false,
@@ -46,29 +54,54 @@ const ChartSpireReact = () => {
             // createIndicator (volumeBars)
         }
 
-        // const onWatchlistChange = async (watchlist: Record<string, TickerInfoMap[]>) => {
-        //     console.log('Watchlist has changed:', watchlist)
-        //     try {
-        //         const response = await fetch('http://localhost:3000/watchlist/add', {
-        //             method: 'POST',
-        //             headers: {
-        //                 'Content-Type': 'application/json'
-        //             },
-        //             body: JSON.stringify(watchlist)
-        //         })
-        //         console.log('Response: ', response)
-        //         if (response.ok) {
-        //             console.log('Watchlist updated successfully in the backend.')
-        //         } else {
-        //             console.error('Failed to update watchlist in the backend.')
-        //         }
-        //     } catch (error) {
-        //         console.error('Error:', error);
-        //     }
-        // }
-        //
-        // // @ts-expect-error suppress
-        // setWatchListChangeCallback(onWatchlistChange)
+        const onWatchlistChange = async (watchlist: Record<string, TickerInfoMap[]>) => {
+            console.log('Watchlist has changed:', watchlist)
+            try {
+                const response = await fetch('http://localhost:3000/watchlist/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(watchlist)
+                })
+                console.log('Response: ', response)
+                if (response.ok) {
+                    console.log('Watchlist updated successfully in the backend.')
+                } else {
+                    console.error('Failed to update watchlist in the backend.')
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // @ts-expect-error suppress
+        setWatchListChangeCallback(onWatchlistChange)
+
+        const fetchWatchListWithCallback = async (): Promise<TickerInfoMap | null> => {
+            console.log('Fetching watchlist from the backend...')
+            try {
+                const response = await fetch('http://localhost:3000/watchlist')
+                if (response.ok) {
+                    const data = await response.json().catch(() => null)
+                    if (data) {
+                        console.log('Watchlist retrieved successfully from the backend: ', data)
+                        return data
+                    } else {
+                        console.error('Failed to get watchlist from the backend.')
+                        return null
+                    }
+                } else {
+                    console.error('Failed to get watchlist from the backend.')
+                    return null
+                }
+            } catch (error) {
+                console.error('Error:', error)
+                return null
+            }
+        }
+
+        setGetWatchListsCallback(fetchWatchListWithCallback)
         //
         // const getStore = async (): Promise<Layouts | null> => {
         //     try {

@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import {
     BinanceDataFeed,
     ChartOptions,
-    ChartSpire, fetchWatchListWithCallback, setGetWatchListsCallback,
+    ChartSpire, setGetWatchListsCallback,
     setWatchListChangeCallback,
     StocksDataFeed,
     TICKER_TYPE,

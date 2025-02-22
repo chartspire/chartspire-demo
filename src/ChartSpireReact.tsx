@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import {
     BinanceDataFeed,
     ChartOptions,
-    ChartSpire, fetchWatchListWithCallback, setGetWatchListsCallback,
+    ChartSpire, setGetWatchListsCallback,
     setWatchListChangeCallback,
     StocksDataFeed,
     TICKER_TYPE,
@@ -11,10 +11,11 @@ import {
 
 const ChartSpireReact = () => {
     const chartContainerRef = useRef(null);
-    let chartRef = useRef(null);
+    const chartRef = useRef(null);
 
     useEffect(() => {
         if (chartContainerRef.current) {
+            // @ts-expect-error suppress
             const options: ChartOptions  = {
                 container: chartContainerRef.current,
                 locale: 'en-US',
@@ -180,6 +181,7 @@ const ChartSpireReact = () => {
         return () => {
             if (chartRef.current) {
                 console.warn('chartRef.current.destroy() called in ChartSpireReact.tsx useEffect cleanup function')
+                // @ts-expect-error suppress
                 chartRef.current.destroy()
                 chartRef.current = null
             }

@@ -1,23 +1,7 @@
-/*
- * This file is part of ChartSpire.
- *
- * ChartSpire is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * ChartSpire is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License
- * along with ChartSpire. If not, see <https://www.gnu.org/licenses/>.
- */
-
+// ! to update to v10-Alpha3
 import { IndicatorDefinition } from 'chartspire'
 
-// @eslint-next-line @typescript-eslint/no-unused
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const volumeBars: IndicatorDefinition<any> = {
 	isMainIndicator: true,
 	isSubIndicator: false,
@@ -36,7 +20,6 @@ const volumeBars: IndicatorDefinition<any> = {
 	createTooltipDataSource: ({ kLineDataList, crosshair, indicator, defaultStyles }) => {
 		const { dataIndex } = crosshair
 		const result = indicator.result
-		// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
 		const styles = indicator.styles ?? defaultStyles
 		let color
 		const kLineData = kLineDataList[dataIndex!]
@@ -49,24 +32,23 @@ const volumeBars: IndicatorDefinition<any> = {
 		}
 		return {
 			name: 'Volume',
-			// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
 			values: [{ title: '', value: { text: result[dataIndex!] || 'n/a', color } }]
 		}
 	},
+	// @ts-expect-error ignore
 	draw: ({ ctx, kLineDataList, bounding, visibleRange, barSpace, defaultStyles, xAxis }) => {
 		const { from, to } = visibleRange
+		// @ts-expect-error ignore
 		const result = kLineDataList.map(kLineData => kLineData.volume)
 		// const result = indicator.result ! Does not work for some reason
 		let maxVolume = Number.MIN_SAFE_INTEGER
 		for (let i = from; i < to; i++) {
 			const volume = result[i]
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-			maxVolume = Math.max(volume!, maxVolume)
+			maxVolume = Math.max(volume, maxVolume)
 		}
 		const height = bounding.height
 		const maxBarHeight = height / 4
 		ctx.globalCompositeOperation = 'destination-over'
-		// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
 		const styles = defaultStyles
 		for (let i = from; i < to; i++) {
 			const kLineData = kLineDataList[i]
@@ -89,7 +71,6 @@ const volumeBars: IndicatorDefinition<any> = {
 }
 
 // @ts-expect-error ignore
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 function modifyAlpha (rgbaString, newAlpha: number) {
 	// Extract the rgba components
 	return rgbaString.replace(/rgba\((\d+), (\d+), (\d+), (.+)\)/, `rgba($1, $2, $3, ${newAlpha})`)

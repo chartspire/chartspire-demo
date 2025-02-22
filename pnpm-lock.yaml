@@ -8,9 +8,9 @@ importers:
 
   .:
     dependencies:
-      'chartspire ':
-        specifier: file:../chartspire-ui
-        version: chartspire@file:../chartspire-ui
+      chartspire:
+        specifier: v1.0.0-Alpha2
+        version: 1.0.0-Alpha2(@chartspire/chartspire-chart@10.0.0-alpha2)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -136,6 +136,10 @@ packages:
   '@babel/types@7.26.9':
     resolution: {integrity: sha512-Y3IR1cRnOxOCDvMmNiym7XpXQ93iGDDPHx+Zj+NM+rg0fBaShfQLkg+hKPaZCEvg5N/LeCo4+Rj/i3FuJsIQaw==}
     engines: {node: '>=6.9.0'}
+
+  '@chartspire/chartspire-chart@10.0.0-alpha2':
+    resolution: {integrity: sha512-iX4PXcufs4e6gzmO8yPz3lsrucCohzaaOS5TrykbgrFbvCPqWPJodqUHmN3qCQcQ/eGIMu3FytQZ9IVpzHbCNQ==}
+    engines: {node: '>=0.10.0'}
 
   '@esbuild/aix-ppc64@0.24.2':
     resolution: {integrity: sha512-thpVCb/rhxE/BnMLQ7GReQLLN8q9qbHmI55F4489/ByVg2aQaQ6kbcLb6FHkocZzQhxc4gx0sCk0tJkKBFzDhA==}
@@ -603,10 +607,10 @@ packages:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
     engines: {node: '>=10'}
 
-  chartspire@file:../chartspire-ui:
-    resolution: {directory: ../chartspire-ui, type: directory}
+  chartspire@1.0.0-Alpha2:
+    resolution: {integrity: sha512-pINDitCFo2M1y24cipBp/xQ2of4py/Uypk2KbB90e/2W6KmstYj/9V4YxPubCjylxfyL4y+UDjFyww57jyqSng==}
     peerDependencies:
-      '@chartspire/chartspire-chart': file:../chartspire-chart
+      '@chartspire/chartspire-chart': ^10.0.0-alpha2
 
   chroma-js@3.1.2:
     resolution: {integrity: sha512-IJnETTalXbsLx1eKEgx19d5L6SRM7cH4vINw/99p/M11HCuXGRWL+6YmCm7FWFGIo6dtWuQoQi1dc5yQ7ESIHg==}
@@ -1217,6 +1221,8 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
+  '@chartspire/chartspire-chart@10.0.0-alpha2': {}
+
   '@esbuild/aix-ppc64@0.24.2':
     optional: true
 
@@ -1611,8 +1617,9 @@ snapshots:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
 
-  chartspire@file:../chartspire-ui:
+  chartspire@1.0.0-Alpha2(@chartspire/chartspire-chart@10.0.0-alpha2):
     dependencies:
+      '@chartspire/chartspire-chart': 10.0.0-alpha2
       '@thisbeyond/solid-dnd': 0.7.5(solid-js@1.9.4)
       chroma-js: 3.1.2
       lodash: 4.17.21

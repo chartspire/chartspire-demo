@@ -2,10 +2,11 @@ import { useEffect, useRef } from 'react'
 import {
     BinanceDataFeed,
     ChartOptions,
-    ChartSpire, setGetWatchListsCallback,
-    setWatchListChangeCallback,
+    ChartSpire,
+    // setGetWatchListsCallback,
+    // setWatchListChangeCallback,
     TICKER_TYPE,
-    TickerInfoMap
+    // TickerInfoMap
 } from 'chartspire'
 
 const ChartSpireReact = () => {
@@ -54,54 +55,54 @@ const ChartSpireReact = () => {
             // createIndicator (volumeBars)
         }
 
-        const onWatchlistChange = async (watchlist: Record<string, TickerInfoMap[]>) => {
-            console.log('Watchlist has changed:', watchlist)
-            try {
-                const response = await fetch('http://localhost:3000/watchlist/add', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(watchlist)
-                })
-                console.log('Response: ', response)
-                if (response.ok) {
-                    console.log('Watchlist updated successfully in the backend.')
-                } else {
-                    console.error('Failed to update watchlist in the backend.')
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }
+        // const onWatchlistChange = async (watchlist: Record<string, TickerInfoMap[]>) => {
+        //     console.log('Watchlist has changed:', watchlist)
+        //     try {
+        //         const response = await fetch('http://localhost:3000/watchlist/add', {
+        //             method: 'POST',
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             },
+        //             body: JSON.stringify(watchlist)
+        //         })
+        //         console.log('Response: ', response)
+        //         if (response.ok) {
+        //             console.log('Watchlist updated successfully in the backend.')
+        //         } else {
+        //             console.error('Failed to update watchlist in the backend.')
+        //         }
+        //     } catch (error) {
+        //         console.error('Error:', error);
+        //     }
+        // }
 
-        // @ts-expect-error suppress
-        setWatchListChangeCallback(onWatchlistChange)
+        // // @ts-expect-error suppress
+        // setWatchListChangeCallback(onWatchlistChange)
+        //
+        // const fetchWatchListWithCallback = async (): Promise<TickerInfoMap | null> => {
+        //     console.log('Fetching watchlist from the backend...')
+        //     try {
+        //         const response = await fetch('http://localhost:3000/watchlist')
+        //         if (response.ok) {
+        //             const data = await response.json().catch(() => null)
+        //             if (data) {
+        //                 console.log('Watchlist retrieved successfully from the backend: ', data)
+        //                 return data
+        //             } else {
+        //                 console.error('Failed to get watchlist from the backend.')
+        //                 return null
+        //             }
+        //         } else {
+        //             console.error('Failed to get watchlist from the backend.')
+        //             return null
+        //         }
+        //     } catch (error) {
+        //         console.error('Error:', error)
+        //         return null
+        //     }
+        // }
 
-        const fetchWatchListWithCallback = async (): Promise<TickerInfoMap | null> => {
-            console.log('Fetching watchlist from the backend...')
-            try {
-                const response = await fetch('http://localhost:3000/watchlist')
-                if (response.ok) {
-                    const data = await response.json().catch(() => null)
-                    if (data) {
-                        console.log('Watchlist retrieved successfully from the backend: ', data)
-                        return data
-                    } else {
-                        console.error('Failed to get watchlist from the backend.')
-                        return null
-                    }
-                } else {
-                    console.error('Failed to get watchlist from the backend.')
-                    return null
-                }
-            } catch (error) {
-                console.error('Error:', error)
-                return null
-            }
-        }
-
-        setGetWatchListsCallback(fetchWatchListWithCallback)
+        // setGetWatchListsCallback(fetchWatchListWithCallback)
         //
         // const getStore = async (): Promise<Layouts | null> => {
         //     try {

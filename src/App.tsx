@@ -25,7 +25,7 @@ function App() {
   return (
     <>
       <div style={styles.statusBar}>
-        ⚠️ Alpha Version v1.0.0-Alpha2: This is a pre-release version for testing purposes only.
+        ⚠️ Alpha Version v1.0.0-alpha3: This is a pre-release version for testing purposes only.
       </div>
       <ChartSpireReact/>
       {/*<div>*/}

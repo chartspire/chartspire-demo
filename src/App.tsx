@@ -1,5 +1,6 @@
 import './App.css'
 import ChartSpireReact from './ChartSpireReact.tsx'
+import { useState } from 'react'
 
 const styles = {
   container: {
@@ -13,7 +14,20 @@ const styles = {
     padding: '8px 16px',
     textAlign: 'center' as const,
     fontWeight: 'bold',
-    fontSize: '14px'
+    fontSize: '14px',
+    position: 'relative' as const
+  },
+  closeButton: {
+    position: 'absolute' as const,
+    right: '10px',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    background: 'none',
+    border: 'none',
+    color: 'white',
+    cursor: 'pointer',
+    fontSize: '18px',
+    padding: '2px 6px'
   },
   chartContainer: {
     flex: 1
@@ -21,33 +35,23 @@ const styles = {
 }
 
 function App() {
+  const [showStatusBar, setShowStatusBar] = useState(true);
 
   return (
     <>
-      <div style={styles.statusBar}>
-        ⚠️ Alpha Version v1.0.0-alpha3: This is a pre-release version for testing purposes only.
-      </div>
+      {showStatusBar && (
+        <div style={styles.statusBar}>
+          ⚠️ Alpha v1.0.0-alpha4: Using Binance API and local storage for storage. This is a pre-release version for testing purposes only.
+          <button 
+            style={styles.closeButton} 
+            onClick={() => setShowStatusBar(false)}
+            title="Hide status bar"
+          >
+            ✕
+          </button>
+        </div>
+      )}
       <ChartSpireReact/>
-      {/*<div>*/}
-      {/*  <a href="https://vite.dev" target="_blank">*/}
-      {/*    <img src={viteLogo} className="logo" alt="Vite logo" />*/}
-      {/*  </a>*/}
-      {/*  <a href="https://react.dev" target="_blank">*/}
-      {/*    <img src={reactLogo} className="logo react" alt="React logo" />*/}
-      {/*  </a>*/}
-      {/*</div>*/}
-      {/*<h1>Vite + React</h1>*/}
-      {/*<div className="card">*/}
-      {/*  <button onClick={() => setCount((count) => count + 1)}>*/}
-      {/*    count is {count}*/}
-      {/*  </button>*/}
-      {/*  <p>*/}
-      {/*    Edit <code>src/App.tsx</code> and save to test HMR*/}
-      {/*  </p>*/}
-      {/*</div>*/}
-      {/*<p className="read-the-docs">*/}
-      {/*  Click on the Vite and React logos to learn more*/}
-      {/*</p>*/}
     </>
   )
 }

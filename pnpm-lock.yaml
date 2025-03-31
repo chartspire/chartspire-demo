@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       chartspire:
-        specifier: v1.0.0-alpha4
-        version: 1.0.0-alpha4(@chartspire/chartspire-chart@10.0.0-alpha3)
+        specifier: 1.0.0-alpha5
+        version: 1.0.0-alpha5(@chartspire/chartspire-chart@10.0.0-alpha3)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -619,10 +619,10 @@ packages:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
     engines: {node: '>=10'}
 
-  chartspire@1.0.0-alpha4:
-    resolution: {integrity: sha512-00mZRgMzLNSC24C90xqJg7bweR/KIeZKmaIF/BiVfEOz/80e4DZhHh9//F6w2fKnU/pk+h52x2xmMm68HVLH0A==}
+  chartspire@1.0.0-alpha5:
+    resolution: {integrity: sha512-lE/p3EUlrOcyWi2nT2znNzrOzuhANOWy7zkUBa/BrWuwbkUjFgxGRbIheybA+p2mbvKTNP57FJS0GgxTq+lC9Q==}
     peerDependencies:
-      '@chartspire/chartspire-chart': 10.0.0-alpha3
+      '@chartspire/chartspire-chart': 10.0.0-alpha4
 
   chroma-js@3.1.2:
     resolution: {integrity: sha512-IJnETTalXbsLx1eKEgx19d5L6SRM7cH4vINw/99p/M11HCuXGRWL+6YmCm7FWFGIo6dtWuQoQi1dc5yQ7ESIHg==}
@@ -1636,7 +1636,7 @@ snapshots:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
 
-  chartspire@1.0.0-alpha4(@chartspire/chartspire-chart@10.0.0-alpha3):
+  chartspire@1.0.0-alpha5(@chartspire/chartspire-chart@10.0.0-alpha3):
     dependencies:
       '@chartspire/chartspire-chart': 10.0.0-alpha3
       '@thisbeyond/solid-dnd': 0.7.5(solid-js@1.9.5)

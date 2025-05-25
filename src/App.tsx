@@ -41,7 +41,7 @@ function App() {
     <>
       {showStatusBar && (
         <div style={styles.statusBar}>
-          ⚠️ Alpha v1.0.0-alpha7: Using Binance API and local storage for storage. This is a pre-release version for testing purposes only.
+          ⚠️ Alpha v1.0.0-alpha8: Data from Binance API. This is a pre-release version for testing purposes only.
           <button 
             style={styles.closeButton} 
             onClick={() => setShowStatusBar(false)}

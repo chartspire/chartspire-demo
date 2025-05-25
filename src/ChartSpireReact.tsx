@@ -38,7 +38,7 @@ const ChartSpireReact = () => {
                 //     priceCurrency: 'usd',
                 //     type: TICKER_TYPE.STOCKS,
                 // },
-                period: { multiplier: 1, timespan: 'week', text: 'W' },
+                interval: { multiplier: 1, timespan: 'week', text: 'W' },
                 // subIndicators: ['VOL', 'MACD'],
                 theme: 'Dark Theme',
                 watchlistEnabled: true,

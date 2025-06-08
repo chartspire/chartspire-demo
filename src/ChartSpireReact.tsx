@@ -42,12 +42,13 @@ const ChartSpireReact = () => {
                 // subIndicators: ['VOL', 'MACD'],
                 theme: 'Dark Theme',
                 watchlistEnabled: true,
-                useExternalWatchListStorage: false,
+                watchListUseExternalStorage: false,
                 defaultDataFeed: new BinanceDataFeed(),
                 // stockDataFeed: new StocksDataFeed(),
                 cryptoDataFeed: new BinanceDataFeed(),
-                useExternalLayoutStorage: false,
+                layoutUseExternalStorage: false,
                 layoutLimit: 10,
+                paperTradingEnabled: true
             }
 
             // @ts-expect-error suppress

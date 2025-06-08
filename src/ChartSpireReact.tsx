@@ -40,7 +40,7 @@ const ChartSpireReact = () => {
                 // },
                 interval: { multiplier: 1, timespan: 'week', text: 'W' },
                 // subIndicators: ['VOL', 'MACD'],
-                theme: 'Dark Theme',
+                // theme: 'Dark Theme',
                 watchlistEnabled: true,
                 watchListUseExternalStorage: false,
                 defaultDataFeed: new BinanceDataFeed(),

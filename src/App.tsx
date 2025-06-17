@@ -15,7 +15,13 @@ const styles = {
     textAlign: 'center' as const,
     fontWeight: 'bold',
     fontSize: '14px',
-    position: 'relative' as const
+    position: 'absolute' as const,
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1000020,
+    width: '100%',
+    boxSizing: 'border-box' as const
   },
   closeButton: {
     position: 'absolute' as const,
@@ -41,7 +47,7 @@ function App() {
     <>
       {showStatusBar && (
         <div style={styles.statusBar}>
-          ⚠️ Alpha v1.0.0-alpha9: Data from Binance API. This is a pre-release version for testing purposes only.
+          ⚠️ Alpha v1.0.0-alpha10: Data from Binance API. This is a pre-release version for testing purposes only.
           <button 
             style={styles.closeButton} 
             onClick={() => setShowStatusBar(false)}

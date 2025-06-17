@@ -48,7 +48,15 @@ const ChartSpireReact = () => {
                 cryptoDataFeed: new BinanceDataFeed(),
                 layoutUseExternalStorage: false,
                 layoutLimit: 10,
-                paperTradingEnabled: true
+                paperTradingEnabled: true,
+                paperTradingUseExternalStorage: false,
+                paperTradingPriceTrackingInterval: 30000,
+                paperTradingMaxTrades: 100, // Limit to 100 trades (minimum: 1, default: 1000)
+                // multiChartDelay: 1000,
+                multiChartLimit: 16,
+                themeUseExternalStorage: false,
+                // fontFamily: 'Roboto'
+                // fontFamily: 'monospace'
             }
 
             // @ts-expect-error suppress

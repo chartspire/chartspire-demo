@@ -14,11 +14,37 @@
 
 body {
   margin: 0;
-  /* min-height: 100vh; */
+  padding: 0;
+  /* Fallback for older browsers */
+  min-height: 100vh;
+  
+  /* Modern browsers - uses dynamic viewport height that excludes mobile browser UI */
+  min-height: 100dvh;
+  
+  /* Safari fallback */
+  min-height: -webkit-fill-available;
+  
+  /* Prevent any scrolling */
+  overflow: hidden;
 }
 
 #container {
-  /*height: calc(100vh - 30px - 6px);*/
+  /* Fallback for older browsers */
   height: 100vh;
+  
+  /* Modern browsers - dynamic viewport height (excludes mobile browser UI) */
+  height: 100dvh;
+  
+  /* Safari fallback */
+  height: -webkit-fill-available;
+  
+  width: 100vw;
   overflow: hidden;
+  
+  /* Additional mobile fixes */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

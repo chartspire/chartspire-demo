@@ -55,6 +55,7 @@ const ChartSpireReact = () => {
                 // multiChartDelay: 1000,
                 multiChartLimit: 16,
                 themeUseExternalStorage: false,
+                orderBookEnabled: true,
                 // fontFamily: 'Roboto'
                 // fontFamily: 'monospace'
             }

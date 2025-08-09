@@ -55,7 +55,8 @@ const ChartSpireReact = () => {
                 multiChartLimit: 16,
                 themeUseExternalStorage: false,
                 orderBookEnabled: true,
-                enabledSymbolTypes: [SYMBOL_TYPE.CRYPTO]
+                enabledSymbolTypes: [SYMBOL_TYPE.CRYPTO],
+                tradesEnabled: true,
                 // fontFamily: 'Roboto'
                 // fontFamily: 'monospace'
             }

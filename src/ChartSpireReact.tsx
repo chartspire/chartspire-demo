@@ -5,7 +5,7 @@ import {
     ChartSpire,
     // setGetWatchListsCallback,
     // setWatchListChangeCallback,
-    TICKER_TYPE,
+    SYMBOL_TYPE,
     // TickerInfoMap
 } from 'chartspire'
 
@@ -15,19 +15,20 @@ const ChartSpireReact = () => {
 
     useEffect(() => {
         if (chartContainerRef.current) {
-            // @ts-expect-error suppress
             const options: ChartOptions  = {
                 container: chartContainerRef.current,
+                rootContainer: chartContainerRef.current,
                 locale: 'en-US',
+                setTheme: () => {}, // Add required setTheme callback
                 // locale: 'zh-CN',
-                ticker: {
+                symbol: {
                     exchange: 'binance',
                     market: 'Crypto',
                     name: 'Bitcoin',
                     shortName: 'BTCUSDT',
-                    ticker: 'BTCUSDT',
+                    symbol: 'BTCUSDT',
                     priceCurrency: 'usd',
-                    type: TICKER_TYPE.CRYPTO,
+                    type: SYMBOL_TYPE.CRYPTO,
                 },
                 // ticker: {
                 //     exchange: 'nasdaq',
@@ -41,11 +42,9 @@ const ChartSpireReact = () => {
                 interval: { multiplier: 1, timespan: 'week', text: 'W' },
                 // subIndicators: ['VOL', 'MACD'],
                 // theme: 'Dark Theme',
-                watchlistEnabled: true,
+                watchListEnabled: true,
                 watchListUseExternalStorage: false,
                 defaultDataFeed: new BinanceDataFeed(),
-                // stockDataFeed: new StocksDataFeed(),
-                cryptoDataFeed: new BinanceDataFeed(),
                 layoutUseExternalStorage: false,
                 layoutLimit: 10,
                 paperTradingEnabled: true,
@@ -56,6 +55,7 @@ const ChartSpireReact = () => {
                 multiChartLimit: 16,
                 themeUseExternalStorage: false,
                 orderBookEnabled: true,
+                enabledSymbolTypes: [SYMBOL_TYPE.CRYPTO]
                 // fontFamily: 'Roboto'
                 // fontFamily: 'monospace'
             }

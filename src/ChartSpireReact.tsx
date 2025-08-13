@@ -57,6 +57,7 @@ const ChartSpireReact = () => {
                 orderBookEnabled: true,
                 enabledSymbolTypes: [SYMBOL_TYPE.CRYPTO],
                 tradesEnabled: true,
+                candleCloseTimerEnabled: true,
                 // fontFamily: 'Roboto'
                 // fontFamily: 'monospace'
             }

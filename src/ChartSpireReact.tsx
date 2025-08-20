@@ -44,7 +44,7 @@ const ChartSpireReact = () => {
                 // theme: 'Dark Theme',
                 watchListEnabled: true,
                 watchListUseExternalStorage: false,
-                defaultDataFeed: new BinanceDataFeed(),
+                dataFeed: new BinanceDataFeed(),
                 layoutUseExternalStorage: false,
                 layoutLimit: 10,
                 paperTradingEnabled: true,
@@ -58,6 +58,13 @@ const ChartSpireReact = () => {
                 enabledSymbolTypes: [SYMBOL_TYPE.CRYPTO],
                 tradesEnabled: true,
                 candleCloseTimerEnabled: true,
+                menuPagesEnabled: true,
+                menuPages: [
+                    {
+                        name: 'Home',
+                        path: '/home'
+                    }
+                ],
                 // fontFamily: 'Roboto'
                 // fontFamily: 'monospace'
             }
